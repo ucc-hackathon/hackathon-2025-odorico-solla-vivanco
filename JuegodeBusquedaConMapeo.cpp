@@ -1,7 +1,6 @@
 #include <iostream>
-#include <string> //para los nombres de las habitaciones
-#include <cstdlib> //para poder usar variables aleatorias
-#include <ctime>
+#include <string>
+#include <cstdlib> 
 using namespace std;
 
 class Habitacion
@@ -9,7 +8,7 @@ class Habitacion
 private:
     string nombre;
     string elemento;
-    bool tomado; //para ver si el elemento se recogio
+    bool tomado; 
 
 public:
     int norte, sur, este, oeste;
@@ -19,7 +18,7 @@ public:
         nombre = "";
         elemento = "";
         tomado = false;
-        norte = sur = este = oeste = -1; //indicar que no hay conexion
+        norte = sur = este = oeste = -1; 
     }
 
     Habitacion(string n)
@@ -27,23 +26,23 @@ public:
         nombre = n;
         tomado = false;
         norte = sur = este = oeste = -1;
-        int aleatorio = rand() % 3; //randomizar elementos
+        int aleatorio = rand() % 3; 
         if (aleatorio == 1) 
-            elemento = "alimento";//si es 1 en la habitacion hay alimento
+            elemento = "alimento";
         else if (aleatorio == 2)
-            elemento = "arma";//si es 2 en la habitacion hay alimento
+            elemento = "arma";
     }
 
     string getNombre() { return nombre; }
     string getElemento() { return elemento; }
-    bool tieneElemento() { return (elemento != "" && !tomado); } //cambiar el estado a true si fue tomado para que no se recoga el mismo objeto
+    bool tieneElemento() { return (elemento != "" && !tomado); } 
 
     void tomarElemento() { tomado = true; }
 };
 
 int main()
 {
-    srand(time(0)); //para que todos los elementos sean aleatorios x partida
+    srand(time(0)); 
 
     Habitacion habs[8];
     habs[1] = Habitacion("Habitacion 1");
@@ -54,7 +53,7 @@ int main()
     habs[6] = Habitacion("Habitacion 6");
     habs[7] = Habitacion("Habitacion 7");
 
-    habs[1].sur = 3; //conexiones
+    habs[1].sur = 3;
     habs[2].sur = 4;
     habs[3].norte = 1;
     habs[3].este = 4;
@@ -67,7 +66,7 @@ int main()
     habs[6].este = 7;
     habs[7].oeste = 6;
 
-    int pasos = 10; //variables del juego, con max de 12 pasos y puntos iniciales 0 y la pose inicial es en 1
+    int pasos = 10;
     int puntos = 0;
     int actual = 1;
 
@@ -164,3 +163,4 @@ int main()
 
     return 0;
 }
+
